@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style type="text/css">
+        td, th {
+            text-align: center;
+        }
+    </style>
+    <title>学生登录</title>
+    <script type="text/javascript">
+        function SetCookie(cookieName,cookieValue) {
+            document.cookie = cookieName + "=" + escape(cookieValue);
+
+        }
+        function slogin() {
+            var s_id = $("s_id").value;
+            var s_password = $("s_password").value;
+            SetCookie("s_id",s_id);
+        }
+        function $(id) {
+            return document.getElementById(id);
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <center><h3>学生登录</h3></center>
+    <form th:action="@{/student/Login}" method="post">
+
+        <div class="form-group">
+            <label for="s_id">学生Id：</label>
+            <input type="text" class="form-control" id = "s_id" name="s_id" placeholder="请输入学生Id" th:field="${student.studentid}">
+        </div>
+
+        <div class="form-group">
+            <label for="s_password">学生密码：</label>
+            <input type="text" class="form-control" id="s_password" name="s_password" placeholder="请输入学生密码" th:field="${student.studentpassword}">
+        </div>
+
+
+        <div class="form-group" style="text-align: center">
+            <a th:href="@{/student/Login}"> <input class="btn btn-primary"  type="submit" onclick="slogin()" value="提交"/></a>
+            <a href="addHomework.html" th:href="@{/studentLogin}"> <input class="btn btn-default" type="reset" value="重置"/></a>
+            <a href="list.html" th:href="@{/index.html}"> <input class="btn btn-default" type="button" value="返回"/></a>
+        </div>
+
+    </form>
+
+    <form th:action="@{/studentRegister}" method="post" role="from" class="smart-green" >
+        <input type="submit" class="button"  value="注册"/>
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+
+// IntelliJ API Decompiler stub source generated from a class file
+        // Implementation of methods is not available
+
+        package org.mybatis.spring;
+
+        public class SqlSessionFactoryBean implements org.springframework.beans.factory.FactoryBean<org.apache.ibatis.session.SqlSessionFactory>, org.springframework.beans.factory.InitializingBean, org.springframework.context.ApplicationListener<org.springframework.context.ApplicationEvent> {
+    private static final org.apache.ibatis.logging.Log logger;
+    private org.springframework.core.io.Resource configLocation;
+    private org.springframework.core.io.Resource[] mapperLocations;
+    private javax.sql.DataSource dataSource;
+    private org.apache.ibatis.transaction.TransactionFactory transactionFactory;
+    private java.util.Properties configurationProperties;
+    private org.apache.ibatis.session.SqlSessionFactoryBuilder sqlSessionFactoryBuilder;
+    private org.apache.ibatis.session.SqlSessionFactory sqlSessionFactory;
+    private java.lang.String environment;
+    private boolean failFast;
+    private org.apache.ibatis.plugin.Interceptor[] plugins;
+    private org.apache.ibatis.type.TypeHandler<?>[] typeHandlers;
+    private java.lang.String typeHandlersPackage;
+    private java.lang.Class<?>[] typeAliases;
+    private java.lang.String typeAliasesPackage;
+    private java.lang.Class<?> typeAliasesSuperType;
+    private org.apache.ibatis.mapping.DatabaseIdProvider databaseIdProvider;
+    private org.apache.ibatis.reflection.factory.ObjectFactory objectFactory;
+    private org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory objectWrapperFactory;
+
+    public SqlSessionFactoryBean() { /* compiled code */ }
+
+    public void setObjectFactory(org.apache.ibatis.reflection.factory.ObjectFactory objectFactory) { /* compiled code */ }
+
+    public void setObjectWrapperFactory(org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory objectWrapperFactory) { /* compiled code */ }
+
+    public org.apache.ibatis.mapping.DatabaseIdProvider getDatabaseIdProvider() { /* compiled code */ }
+
+    public void setDatabaseIdProvider(org.apache.ibatis.mapping.DatabaseIdProvider databaseIdProvider) { /* compiled code */ }
+
+    public void setPlugins(org.apache.ibatis.plugin.Interceptor[] plugins) { /* compiled code */ }
+
+    public void setTypeAliasesPackage(java.lang.String typeAliasesPackage) { /* compiled code */ }
+
+    public void setTypeAliasesSuperType(java.lang.Class<?> typeAliasesSuperType) { /* compiled code */ }
+
+    public void setTypeHandlersPackage(java.lang.String typeHandlersPackage) { /* compiled code */ }
+
+    public void setTypeHandlers(org.apache.ibatis.type.TypeHandler<?>[] typeHandlers) { /* compiled code */ }
+
+    public void setTypeAliases(java.lang.Class<?>[] typeAliases) { /* compiled code */ }
+
+    public void setFailFast(boolean failFast) { /* compiled code */ }
+
+    public void setConfigLocation(org.springframework.core.io.Resource configLocation) { /* compiled code */ }
+
+    public void setMapperLocations(org.springframework.core.io.Resource[] mapperLocations) { /* compiled code */ }
+
+    public void setConfigurationProperties(java.util.Properties sqlSessionFactoryProperties) { /* compiled code */ }
+
+    public void setDataSource(javax.sql.DataSource dataSource) { /* compiled code */ }
+
+    public void setSqlSessionFactoryBuilder(org.apache.ibatis.session.SqlSessionFactoryBuilder sqlSessionFactoryBuilder) { /* compiled code */ }
+
+    public void setTransactionFactory(org.apache.ibatis.transaction.TransactionFactory transactionFactory) { /* compiled code */ }
+
+    public void setEnvironment(java.lang.String environment) { /* compiled code */ }
+
+    public void afterPropertiesSet() throws java.lang.Exception { /* compiled code */ }
+
+    protected org.apache.ibatis.session.SqlSessionFactory buildSqlSessionFactory() throws java.io.IOException { /* compiled code */ }
+
+    public org.apache.ibatis.session.SqlSessionFactory getObject() throws java.lang.Exception { /* compiled code */ }
+
+    public java.lang.Class<? extends org.apache.ibatis.session.SqlSessionFactory> getObjectType() { /* compiled code */ }
+
+    public boolean isSingleton() { /* compiled code */ }
+
+    public void onApplicationEvent(org.springframework.context.ApplicationEvent event) { /* compiled code */ }
+    }

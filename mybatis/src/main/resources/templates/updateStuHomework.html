@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- 网页使用的语言 -->
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base href="<%=basePath%>"/>
+    <!-- 指定字符集 -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>修改用户</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container" style="width: 400px;">
+    <h3 style="text-align: center;">修改作业</h3>
+    <form th:action="@{/student/saveUpdate}" method="post">
+
+
+        <div class="form-group">
+            <label for="content">作业编号：</label>
+            <input type="text" class="form-control" id="sh_id" name="sh_id"  placeholder="请输入想要修改的作业编号"
+                   th:field="${student_homework.shid}"/>
+        </div>
+
+        <div class="form-group">
+            <label for="content">作业内容：</label>
+            <input type="text" class="form-control" id="content" name="content"  placeholder="请输入新内容"
+                   th:field="${student_homework.homeworkcontent}"/>
+        </div>
+
+
+        <div class="form-group" style="text-align: center">
+            <a th:href="@{/student/saveUpdate}"> <input class="btn btn-primary" type="submit" value="提交"/></a>
+            <a th:href="@{/updateStuHomework}"> <input class="btn btn-default" type="reset" value="重置"/></a>
+            <a th:href="@{/shlistForStu}"> <input class="btn btn-default" type="button" value="返回"/></a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mybatis.mapper.s_teacherMapper" >
+  <resultMap id="BaseResultMap" type="com.example.mybatis.entity.s_teacher" >
+    <id column="teacherId" property="teacherid" jdbcType="BIGINT" />
+    <result column="teacherName" property="teachername" jdbcType="VARCHAR" />
+    <result column="teacherUserId" property="teacheruserid" jdbcType="BIGINT" />
+    <result column="teacherPassword" property="teacherpassword" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    teacherId, teacherName, teacherUserId, teacherPassword
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.mybatis.entity.s_teacherExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from s_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_teacher
+    where teacherId = #{teacherid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from s_teacher
+    where teacherId = #{teacherid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.mybatis.entity.s_teacherExample" >
+    delete from s_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.mybatis.entity.s_teacher" >
+    insert into s_teacher (teacherId, teacherName, teacherUserId, 
+      teacherPassword)
+    values (#{teacherid,jdbcType=BIGINT}, #{teachername,jdbcType=VARCHAR}, #{teacheruserid,jdbcType=BIGINT}, 
+      #{teacherpassword,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.mybatis.entity.s_teacher" >
+    insert into s_teacher
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teacherid != null" >
+        teacherId,
+      </if>
+      <if test="teachername != null" >
+        teacherName,
+      </if>
+      <if test="teacheruserid != null" >
+        teacherUserId,
+      </if>
+      <if test="teacherpassword != null" >
+        teacherPassword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teacherid != null" >
+        #{teacherid,jdbcType=BIGINT},
+      </if>
+      <if test="teachername != null" >
+        #{teachername,jdbcType=VARCHAR},
+      </if>
+      <if test="teacheruserid != null" >
+        #{teacheruserid,jdbcType=BIGINT},
+      </if>
+      <if test="teacherpassword != null" >
+        #{teacherpassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.mybatis.entity.s_teacherExample" resultType="java.lang.Integer" >
+    select count(*) from s_teacher
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update s_teacher
+    <set >
+      <if test="record.teacherid != null" >
+        teacherId = #{record.teacherid,jdbcType=BIGINT},
+      </if>
+      <if test="record.teachername != null" >
+        teacherName = #{record.teachername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.teacheruserid != null" >
+        teacherUserId = #{record.teacheruserid,jdbcType=BIGINT},
+      </if>
+      <if test="record.teacherpassword != null" >
+        teacherPassword = #{record.teacherpassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update s_teacher
+    set teacherId = #{record.teacherid,jdbcType=BIGINT},
+      teacherName = #{record.teachername,jdbcType=VARCHAR},
+      teacherUserId = #{record.teacheruserid,jdbcType=BIGINT},
+      teacherPassword = #{record.teacherpassword,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatis.entity.s_teacher" >
+    update s_teacher
+    <set >
+      <if test="teachername != null" >
+        teacherName = #{teachername,jdbcType=VARCHAR},
+      </if>
+      <if test="teacheruserid != null" >
+        teacherUserId = #{teacheruserid,jdbcType=BIGINT},
+      </if>
+      <if test="teacherpassword != null" >
+        teacherPassword = #{teacherpassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where teacherId = #{teacherid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.mybatis.entity.s_teacher" >
+    update s_teacher
+    set teacherName = #{teachername,jdbcType=VARCHAR},
+      teacherUserId = #{teacheruserid,jdbcType=BIGINT},
+      teacherPassword = #{teacherpassword,jdbcType=VARCHAR}
+    where teacherId = #{teacherid,jdbcType=BIGINT}
+  </update>
+</mapper>
